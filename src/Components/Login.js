@@ -29,7 +29,7 @@ class Login extends Component {
                                 <h3>Login</h3>
                                 <div className="form-group">
                                     <label htmlFor="username">Username</label>
-                                    <input className="form-control" name="username" placeholder="Enter your username here" />
+                                    <input className="form-control" name="username" placeholder="Enter your username here" autoFocus={true} />
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="password">Password</label>

@@ -19,7 +19,7 @@ class Signup extends Component {
                                     <h3>Signup</h3>
                                     <div className="form-group">
                                         <label htmlFor="fullname">Full Name</label>
-                                        <input type="text" name="fname" className="form-control" placeholder="Enter your full name" />
+                                        <input type="text" name="fname" className="form-control" placeholder="Enter your full name" autoFocus={true} />
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="username">Username</label>
