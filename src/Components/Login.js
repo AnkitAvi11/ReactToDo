@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Link } from 'react-router-dom';
 
 class Login extends Component {
 
@@ -15,6 +16,9 @@ class Login extends Component {
     }
 
     render() {
+
+        document.title = "Login"
+
         return (
         <div className="container">
             <div className="row">
@@ -35,6 +39,11 @@ class Login extends Component {
                                     <button className="btn btn-primary" style={{width : "100%"}}>
                                         Submit
                                     </button>
+                                </div>
+                                <div className="form-group">
+                                    <p>
+                                        Don't have an account ? <Link to="/signup" className="card-link">Create one</Link>
+                                    </p>
                                 </div>
                             </form>
                         </div>
