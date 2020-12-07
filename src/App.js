@@ -7,18 +7,22 @@ import Signup from './Components/Signup';
 import Home from './Containers/Home';
 
 import createHistory from 'history/createBrowserHistory';
+import { connect } from 'react-redux';
+import Loggedin from './Components/Loggedin';
 
 export const history = createHistory();
 
 class App extends Component {
+
     render() {
+        
         return (
             <Router history={history}>
-                <Navigation />
+                <Navigation loggedin={this.props.loggedin} />
                 <Switch>
                     <Route path="/" component={Home} exact />
-                    <Route path="/login" component={Login} />
-                    <Route path="/signup" component={Signup} />
+                    <Loggedin path="/login" component={Login} loggedin={this.props.loggedin} />
+                    <Loggedin path="/signup" component={Signup} loggedin={this.props.loggedin} />
 
                     <Route component={Notfound} />
 
@@ -28,4 +32,10 @@ class App extends Component {
     }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+    return {
+        loggedin : localStorage.getItem('token') ? true : false
+    }
+}
+
+export default connect(mapStateToProps, {})(App);

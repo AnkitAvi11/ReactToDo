@@ -2,7 +2,18 @@ import React, {Component} from 'react';
 import { NavLink } from 'react-router-dom';
 
 class Navigation extends Component {
+
     render() {
+
+        let auth_routes = <React.Fragment>
+            <li className="nav-item">
+                <NavLink to="/login" className="nav-link">Login</NavLink>
+            </li>
+            <li className="nav-item">
+                <NavLink to="/signup" className="nav-link btn btn-info" style={{color:"white"}}>Signup</NavLink>
+            </li>
+        </React.Fragment>
+
         return (
             <nav className="navbar navbar-expand-md bg-white navbar-light" style={{marginBottom : "20px", marginTop : "10px"}}>
             <div className="container">
@@ -24,12 +35,7 @@ class Navigation extends Component {
                 </ul>
 
                 <ul className="navbar-nav ml-auto">
-                    <li className="nav-item">
-                        <NavLink to="/login" className="nav-link">Login</NavLink>
-                    </li>
-                    <li className="nav-item">
-                        <NavLink to="/signup" className="nav-link btn btn-info" style={{color:"white"}}>Signup</NavLink>
-                    </li>
+                    {this.props.loggedin ? "" : auth_routes}
                 </ul>
             </div>  
             </div>
