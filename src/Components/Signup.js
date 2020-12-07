@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { Link } from "react-router-dom";
+import styles from './signup.module.css';
 
 class Signup extends Component {
 
@@ -15,7 +16,7 @@ class Signup extends Component {
                     <div className="col-sm-5" style={{margin:"auto"}}>
                         <div className="card">
                             <div className="card-body">
-                                <form method="post" onSubmit={this.onSubmit}>
+                                <form method="post" onSubmit={this.onSubmit} className={styles.label} >
                                     <h3>Signup</h3>
                                     <div className="form-group">
                                         <label htmlFor="fullname">Full Name</label>

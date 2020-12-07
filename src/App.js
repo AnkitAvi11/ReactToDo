@@ -1,15 +1,19 @@
 import React, {Component} from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Route, Router, Switch } from 'react-router-dom';
 import Login from './Components/Login';
 import Navigation from './Components/Navigation';
 import Notfound from './Components/Notfound';
 import Signup from './Components/Signup';
 import Home from './Containers/Home';
 
+import createHistory from 'history/createBrowserHistory';
+
+export const history = createHistory();
+
 class App extends Component {
     render() {
         return (
-            <BrowserRouter>
+            <Router history={history}>
                 <Navigation />
                 <Switch>
                     <Route path="/" component={Home} exact />
@@ -19,7 +23,7 @@ class App extends Component {
                     <Route component={Notfound} />
 
                 </Switch>
-            </BrowserRouter>
+            </Router>
         )
     }
 }

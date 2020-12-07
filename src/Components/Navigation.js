@@ -6,7 +6,7 @@ class Navigation extends Component {
         return (
             <nav className="navbar navbar-expand-md bg-white navbar-light" style={{marginBottom : "20px", marginTop : "10px"}}>
             <div className="container">
-            <NavLink className="navbar-brand" to="/" style={{fontSize:"25px", borderBottom : "2px solid darkblue", color:'darkblue'}}><i className="fas fa-clipboard-check"></i> Todoister</NavLink>
+            <NavLink className="navbar-brand" to="/" style={{fontSize:"25px", color:'darkblue'}}><i className="fas fa-clipboard-check"></i> Todoister</NavLink>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
                 <span className="navbar-toggler-icon"></span>
             </button>
