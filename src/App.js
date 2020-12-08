@@ -22,7 +22,9 @@ class App extends Component {
                 <Switch>
 
                     <Route path="/" component={Home} exact />
+                    
                     <Loggedin path="/login" component={Login} loggedin={this.props.loggedin} />
+
                     <Loggedin path="/signup" component={Signup} loggedin={this.props.loggedin} />
 
                     <Route component={Notfound} />

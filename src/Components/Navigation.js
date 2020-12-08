@@ -18,13 +18,12 @@ class Navigation extends Component {
     }
 
     render() {
-
         let auth_routes = <React.Fragment>
             <li className="nav-item">
-                <NavLink to="/login" className="nav-link">Login</NavLink>
+                <NavLink to="/login" className="nav-link" exact>Login</NavLink>
             </li>
             <li className="nav-item">
-                <NavLink to="/signup" className="nav-link btn btn-info" style={{color:"white"}}>Signup</NavLink>
+                <NavLink to="/signup" className="nav-link btn btn-info" style={{color:"white"}} exact   >Signup</NavLink>
             </li>
         </React.Fragment>
 

@@ -1,9 +1,6 @@
 import React from 'react';
 
 import {motion} from 'framer-motion';
-import {logoutUser} from '../actions/auth';
-import { connect } from 'react-redux';
-import { history } from "../App";
 
 class Logout extends React.Component {
 
@@ -12,9 +9,9 @@ class Logout extends React.Component {
     }
 
     logout = () => {
-        this.toggleChange();
-        this.props.logoutUser();
-        history.push('/')
+        localStorage.removeItem('token')
+        localStorage.removeItem('user')
+        window.location.href = "/"
     }
 
     render() {
@@ -47,10 +44,4 @@ class Logout extends React.Component {
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        status : state.logout.status
-    }
-}
-
-export default connect(mapStateToProps, {logoutUser})(Logout);
+export default Logout;
