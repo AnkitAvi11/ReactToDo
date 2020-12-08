@@ -53,7 +53,7 @@ export const loginUser = (username, password) => {
             }
             localStorage.setItem('token', data.token)            
             localStorage.setItem('user', JSON.stringify(data.user))
-            dispatch(loginSuccess(data));
+            dispatch(loginSuccess(data.user));
         }).catch(err => {
             dispatch(loginError(err));
             dispatch(removeError());
