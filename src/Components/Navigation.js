@@ -1,9 +1,24 @@
 import React, {Component} from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+import Logout from './Logout';
 
 class Navigation extends Component {
 
+    constructor(props) {
+        super(props)
+        this.state = {
+            logout_active : false
+        }
+    }
+
+    toggleLogout = () => {
+        this.setState({
+            logout_active : !this.state.logout_active
+        })
+    }
+
     render() {
+
         let auth_routes = <React.Fragment>
             <li className="nav-item">
                 <NavLink to="/login" className="nav-link">Login</NavLink>
@@ -14,8 +29,16 @@ class Navigation extends Component {
         </React.Fragment>
 
         let after_auth_routes = this.props.user ? <React.Fragment>
-            <li className="nav-item">
-                <NavLink to="/login" className="nav-link">Hello, {this.props.user.username}</NavLink>
+            <li className="nav-item dropdown">
+                <NavLink className="nav-link dropdown-toggle" to="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Hello, {this.props.user.username}
+                </NavLink>
+                <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                <Link className="dropdown-item" to="/tasks">Tasks</Link>
+                <Link className="dropdown-item" to="/dashboard">Dashboard</Link>
+                <div className="dropdown-divider"></div>
+                <Link className="dropdown-item" to="#" style={{color:'red', fontWeight:"bolder"}} onClick={this.toggleLogout}>Logout</Link>
+                </div>
             </li>
         </React.Fragment> : "";
 
@@ -42,6 +65,9 @@ class Navigation extends Component {
                 <ul className="navbar-nav ml-auto">
                     {this.props.loggedin ? after_auth_routes : auth_routes}
                 </ul>
+                {this.state.logout_active ? <div>
+                        <Logout change={this.toggleLogout} />
+                    </div> : ""}
             </div>  
             </div>
             </nav>

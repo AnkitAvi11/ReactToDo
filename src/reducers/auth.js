@@ -1,3 +1,4 @@
+
 const initial_state = {
     loading : false,
     error : null,
@@ -61,4 +62,14 @@ export const signupReducer = (state = initial_state, action) => {
 
         default : return state
     }
+}
+
+export const logoutReducer = (state = {status : false}, action) => {
+    if (action.type === 'LOGOUT') {
+        return {
+            ...state,
+            status : true
+        }
+    }
+    return state
 }

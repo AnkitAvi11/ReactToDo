@@ -20,6 +20,7 @@ class App extends Component {
             <Router history={history}>
                 <Navigation loggedin={this.props.loggedin} user={this.props.user} />
                 <Switch>
+
                     <Route path="/" component={Home} exact />
                     <Loggedin path="/login" component={Login} loggedin={this.props.loggedin} />
                     <Loggedin path="/signup" component={Signup} loggedin={this.props.loggedin} />

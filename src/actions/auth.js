@@ -109,3 +109,18 @@ export const signupUser = (fname, username, email, password) => {
         })
     }
 }
+
+const logout = () => {
+    return {
+        type : 'LOGOUT'
+    }
+}
+
+
+export const logoutUser = () => {
+    return async dispatch => {
+        localStorage.removeItem('token')
+        localStorage.removeItem('user')
+        dispatch(logout());
+    }
+}
