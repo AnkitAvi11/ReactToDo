@@ -2,7 +2,6 @@ import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
 
 const Loggedin = ({loggedin, component : Component, ...rest}) => {
-    console.log(loggedin)
     return <Route 
     {...rest}
     component={

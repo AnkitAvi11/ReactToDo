@@ -18,7 +18,7 @@ class App extends Component {
         
         return (
             <Router history={history}>
-                <Navigation loggedin={this.props.loggedin} />
+                <Navigation loggedin={this.props.loggedin} user={this.props.user} />
                 <Switch>
                     <Route path="/" component={Home} exact />
                     <Loggedin path="/login" component={Login} loggedin={this.props.loggedin} />
@@ -34,7 +34,8 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        loggedin : localStorage.getItem('token') ? true : false
+        loggedin : localStorage.getItem('token') ? true : false,
+        user : JSON.parse(localStorage.getItem('user'))
     }
 }
 

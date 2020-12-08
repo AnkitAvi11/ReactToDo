@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 class Home extends Component {
@@ -10,7 +11,7 @@ class Home extends Component {
                         <h4>Hello there! </h4>
                         <p><b>Todoister</b> is a todo application developed using React and RESTFUL APIs based on Django Framework.</p>
                         <p>
-                            <Link to="/signup" className="card-link btn btn-info">Get started</Link>
+                            <Link to={this.props.loggedin ? '/profile' : '/signup'} className="card-link btn btn-info">{this.props.loggedin ? 'Go to account ...' : 'Get started'}</Link>
                         </p>
                     </div>
                     <div className="col-sm-6">
@@ -22,4 +23,10 @@ class Home extends Component {
     }
 }
 
-export default Home;
+const mapStatetoProps = (state) => {
+    return {
+        loggedin : localStorage.getItem('token') ? true : false
+    }
+}
+
+export default connect(mapStatetoProps, {})(Home);

@@ -52,11 +52,60 @@ export const loginUser = (username, password) => {
                 return dispatch(removeError())
             }
             localStorage.setItem('token', data.token)            
-            localStorage.setItem('user', data.user)
+            localStorage.setItem('user', JSON.stringify(data.user))
             dispatch(loginSuccess(data));
         }).catch(err => {
             dispatch(loginError(err));
             dispatch(removeError());
+        })
+    }
+}
+
+const signupStart = () => {
+    return {
+        type : 'SIGNUP_START'
+    }
+}
+
+const signupError = (err) => {
+    return {
+        type : 'SIGNUP_ERROR',
+        payload : err
+    }
+}
+
+const signupSuccess = (user) => {
+    return {
+        type : 'SIGNUP_SUCCESS',
+        payload : user
+    }
+}
+
+//  action to signup the user 
+export const signupUser = (fname, username, email, password) => {
+    return async dispatch => {
+        dispatch(signupStart());
+        fetch(BASE_URL+"api/auth/signup/", {
+            method : 'POST',
+            body : JSON.stringify({
+                fname : fname.toString(),
+                username : username.toString(),
+                email : email.toString(),
+                password : password.toString()
+            }),
+            headers : {
+                'Content-Type' : 'application/json'
+            }
+        }).then(res=>res.json())
+        .then(data => {
+            if(data.error) {
+                dispatch(signupError(data.error))
+                return dispatch(removeError())
+            }
+            dispatch(signupSuccess(data))
+        }).catch(err => {
+            dispatch(signupError(err))
+            dispatch(removeError(err))
         })
     }
 }
