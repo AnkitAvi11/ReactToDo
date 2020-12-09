@@ -124,3 +124,14 @@ export const logoutUser = () => {
         dispatch(logout());
     }
 }
+
+export const changeLoginState = (token = localStorage.getItem('token')) => {
+    return async dispatch => {
+        let user = await (await fetch(BASE_URL+'api/auth/validate/?token='+token)).json();
+        if(user.error) {
+            localStorage.removeItem('token')
+            localStorage.removeItem('user')
+            dispatch(logoutUser());
+        }
+    }
+}

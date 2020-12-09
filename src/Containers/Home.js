@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom';
 
 class Home extends Component {
     render () {
+
+        document.title = "TODOISTER"
+
         return (
             <div className="container"  style={{marginTop : "70px"}}>
                 <div className="row">

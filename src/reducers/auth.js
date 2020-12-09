@@ -73,3 +73,20 @@ export const logoutReducer = (state = {status : false}, action) => {
     }
     return state
 }
+
+
+export const loginState = (state={status : false}, action) => {
+    switch(action.type) {
+        case 'VALIDATION_FAILED' :return {
+            ...state,
+            status : false
+        }
+
+        case 'VALIDATED' : return {
+            ...state,
+            status : true
+        }
+
+        default : return state;
+    }
+}

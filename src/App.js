@@ -9,10 +9,15 @@ import Home from './Containers/Home';
 import createHistory from 'history/createBrowserHistory';
 import { connect } from 'react-redux';
 import Loggedin from './Components/Loggedin';
+import {changeLoginState} from './actions/auth';
 
 export const history = createHistory();
 
 class App extends Component {
+
+    componentDidMount () {
+        this.props.changeLoginState();
+    }
 
     render() {
         
@@ -42,4 +47,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, {})(App);
+export default connect(mapStateToProps, {changeLoginState})(App);

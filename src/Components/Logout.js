@@ -17,7 +17,9 @@ class Logout extends React.Component {
     render() {
         return (
             <motion.div className="modal" tabIndex="-1"
-            style={{display:"block"}}
+            style={{display:"block", background : "rgba(1,1,1, .6)"}}
+            initial={{opacity:0}}
+            animate={{opacity:1}}
             >
             <motion.div className="modal-dialog"
             initial={{y : "-100vh"}}
