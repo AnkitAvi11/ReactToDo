@@ -35,7 +35,7 @@ class App extends Component {
 
                     <Loggedin path="/signup" component={Signup} loggedin={this.props.loggedin} />
 
-                    <PrivateRoute to="/profile" component={Profile} loggedin={this.props.loggedin} />
+                    <PrivateRoute path="/profile" component={Profile} loggedin={this.props.loggedin} />
 
                     <Route component={Notfound} />
 

@@ -36,7 +36,7 @@ export const loginUser = (username, password) => {
     return async (dispatch) => {
         dispatch(startLogin());
         //  sending login request to get the login token 
-        fetch(BASE_URL+'api/auth/login/', {
+        fetch(BASE_URL+'/api/auth/login/', {
             method : 'POST',
             headers : {
                 'Content-Type' : 'application/json'
@@ -85,7 +85,7 @@ const signupSuccess = (user) => {
 export const signupUser = (fname, username, email, password) => {
     return async dispatch => {
         dispatch(signupStart());
-        fetch(BASE_URL+"api/auth/signup/", {
+        fetch(BASE_URL+"/api/auth/signup/", {
             method : 'POST',
             body : JSON.stringify({
                 fname : fname.toString(),
@@ -127,7 +127,7 @@ export const logoutUser = () => {
 
 export const changeLoginState = (token = localStorage.getItem('token')) => {
     return async dispatch => {
-        let user = await (await fetch(BASE_URL+'api/auth/validate/?token='+token)).json();
+        let user = await (await fetch(BASE_URL+'/api/auth/validate/?token='+token)).json();
         if(user.error) {
             localStorage.removeItem('token')
             localStorage.removeItem('user')
