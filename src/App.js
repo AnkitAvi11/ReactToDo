@@ -10,6 +10,9 @@ import createHistory from 'history/createBrowserHistory';
 import { connect } from 'react-redux';
 import Loggedin from './Components/Loggedin';
 import {changeLoginState} from './actions/auth';
+import PrivateRoute from './actions/PrivateRoute';
+import Profile from './Components/Profile';
+
 
 export const history = createHistory();
 
@@ -31,6 +34,8 @@ class App extends Component {
                     <Loggedin path="/login" component={Login} loggedin={this.props.loggedin} />
 
                     <Loggedin path="/signup" component={Signup} loggedin={this.props.loggedin} />
+
+                    <PrivateRoute to="/profile" component={Profile} loggedin={this.props.loggedin} />
 
                     <Route component={Notfound} />
 
