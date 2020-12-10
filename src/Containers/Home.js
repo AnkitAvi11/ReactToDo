@@ -10,8 +10,8 @@ class Home extends Component {
 
         return (
             <motion.div className="container"  style={{marginTop : "70px"}}
-            initial={{scale:0}}
-            animate={{scale:1}}
+            initial={{x:"-100vh"}}
+            animate={{x:0}}
             >
                 <div className="row">
                     <div className="col-sm-6" style={{marginTop : "40px"}}>

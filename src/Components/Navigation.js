@@ -35,7 +35,7 @@ class Navigation extends Component {
                 <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                 <Link className="dropdown-item" to="/tasks">Tasks</Link>
                 <Link className="dropdown-item" to="/dashboard">Dashboard</Link>
-                <Link className="dropdown-item" to="/profile" exact>Profile settings</Link>
+                <Link className="dropdown-item" to="/profile">Profile settings</Link>
                 <div className="dropdown-divider"></div>
                 <a className="dropdown-item" style={{color:'red', fontWeight:"bolder"}} onClick={this.toggleLogout} style={{cursor:'pointer'}}>Logout</a>
                 </div>
