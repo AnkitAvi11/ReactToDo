@@ -29,15 +29,15 @@ class Navigation extends Component {
 
         let after_auth_routes = this.props.user ? <React.Fragment>
             <li className="nav-item dropdown">
-                <NavLink className="nav-link dropdown-toggle" to="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Hello, {this.props.user.username}
-                </NavLink>
+                </a>
                 <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                 <Link className="dropdown-item" to="/tasks">Tasks</Link>
                 <Link className="dropdown-item" to="/dashboard">Dashboard</Link>
-                <Link className="dropdown-item" to="/profile">Profile settings</Link>
+                <Link className="dropdown-item" to="/profile" exact>Profile settings</Link>
                 <div className="dropdown-divider"></div>
-                <Link className="dropdown-item" to="#" style={{color:'red', fontWeight:"bolder"}} onClick={this.toggleLogout}>Logout</Link>
+                <a className="dropdown-item" style={{color:'red', fontWeight:"bolder"}} onClick={this.toggleLogout} style={{cursor:'pointer'}}>Logout</a>
                 </div>
             </li>
         </React.Fragment> : "";

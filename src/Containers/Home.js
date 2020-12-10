@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import {motion} from 'framer-motion';
 
 class Home extends Component {
     render () {
@@ -8,7 +9,10 @@ class Home extends Component {
         document.title = "TODOISTER"
 
         return (
-            <div className="container"  style={{marginTop : "70px"}}>
+            <motion.div className="container"  style={{marginTop : "70px"}}
+            initial={{scale:0}}
+            animate={{scale:1}}
+            >
                 <div className="row">
                     <div className="col-sm-6" style={{marginTop : "40px"}}>
                         <h4>Hello there! </h4>
@@ -21,7 +25,7 @@ class Home extends Component {
                         <img src={process.env.PUBLIC_URL + "/images/check.svg"} alt="check" style={{width:"100%"}} />
                     </div>
                 </div>
-            </div>
+            </motion.div>
         )
     }
 }

@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import {  Switch } from 'react-router-dom';
+import {  Route, Switch } from 'react-router-dom';
 import PrivateRoute from '../actions/PrivateRoute';
 import Userprofile from '../user/Profile';
+import Notfound from './Notfound';
 
 const setting = (props) => {
     return <p>Setting</p>
@@ -24,6 +25,8 @@ class Profile extends Component {
                 <PrivateRoute loggedin={this.props.loggedin} path={`${url}`} component={Userprofile} exact={true} />
 
                 <PrivateRoute path={`${url}/setting`} component={setting} loggedin={this.props.loggedin} />
+
+                <Route component={Notfound} />
 
             </Switch>
         )
