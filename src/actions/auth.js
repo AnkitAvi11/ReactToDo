@@ -126,6 +126,7 @@ export const logoutUser = () => {
 }
 
 export const changeLoginState = (token = localStorage.getItem('token')) => {
+    console.log('Called')
     return async dispatch => {
         let user = await (await fetch(BASE_URL+'/api/auth/validate/?token='+token)).json();
         if(user.error) {
@@ -188,29 +189,8 @@ export const changePassword = (password, password1, password2) => {
             dispatch(passwordChangeSuccess(data))
             dispatch(removeSucces())
         }).catch(err => {
-            dispatch(passwordChangeError(err))
+            dispatch(passwordChangeError('Unexpected error'))
+            return dispatch(removeError())
         });
-    }
-}
-
-
-export const userDetailsChange = (email, first_name, last_name="") => {
-    let formData = new FormData();
-    formData.append('email', email)
-    formData.append('fname', first_name)
-    formData.append('lname', last_name)
-    return async dispatch => {
-        fetch(BASE_URL+"/api/auth/updateuser/", {
-            method : "POST",
-            headers : {
-                "Authorization" : "Token "+localStorage.getItem('token')
-            },
-            body : formData
-        }).then(res => res.json())
-        .then(data => {
-            return data
-        }).catch(err => {
-            return err
-        })
     }
 }

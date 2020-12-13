@@ -38,6 +38,7 @@ class Userdetails extends Component {
                 disabled:true
             })
             return this.props.alert.show('Profile updated successfully', {type:'success'})
+            
         }).catch(err => {
             console.log(err)
         })
