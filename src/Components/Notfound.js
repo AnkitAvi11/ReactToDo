@@ -14,8 +14,8 @@ class Notfound extends Component {
                         transition={{delay:0.3}}
                         />
                         <motion.div
-                        initial={{y:"100vh"}}    
-                        animate={{y:0}}
+                        initial={{x:"-220%"}}    
+                        animate={{x:0}}
                         transition={{delay:0.5}}
                         >
                         <h3 style={{marginTop:"30px"}}>Oops! Error : 404</h3>

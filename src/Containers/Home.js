@@ -22,7 +22,11 @@ class Home extends Component {
                         </p>
                     </div>
                     <div className="col-sm-6">
-                        <img src={process.env.PUBLIC_URL + "/images/check.svg"} alt="check" style={{width:"100%"}} />
+                        <motion.img src={process.env.PUBLIC_URL + "/images/check.svg"} alt="check" style={{width:"100%"}} 
+                        initial={{scale:0}}
+                        animate={{scale:1}}
+                        transition={{delay:0.3}}
+                        />
                     </div>
                 </div>
             </motion.div>

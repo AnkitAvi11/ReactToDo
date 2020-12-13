@@ -5,7 +5,7 @@ const Loggedin = ({loggedin, component : Component, ...rest}) => {
     return <Route 
     {...rest}
     component={
-        (props) => loggedin ? <Redirect to="/" /> : <Component {...props} />
+        (props) => loggedin ? <Redirect to="/tasks" /> : <Component {...props} />
     }
     />
 }

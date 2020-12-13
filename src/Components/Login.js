@@ -31,7 +31,7 @@ class Login extends Component {
             return this.props.alert.show(this.props.auth.error.error, {type: 'error'})
         }
         if(this.props.auth.user!=null) {
-            return history.push('/')
+            return history.push('/profile')
         }
     }
 

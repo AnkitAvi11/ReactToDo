@@ -132,6 +132,10 @@ export const changeLoginState = (token = localStorage.getItem('token')) => {
             localStorage.removeItem('token')
             localStorage.removeItem('user')
             dispatch(logoutUser());
+        }else{
+            localStorage.setItem('token', token)
+            localStorage.setItem('user', JSON.stringify(user))
+            dispatch(loginSuccess(user));
         }
     }
 }
