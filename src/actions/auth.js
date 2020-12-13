@@ -139,3 +139,50 @@ export const changeLoginState = (token = localStorage.getItem('token')) => {
         }
     }
 }
+
+
+const startPasswordChange = () => {
+    return {
+        type : 'PASSWORD_CHANGE_START'
+    }
+}
+
+const passwordChangeError = (err) => {
+    return {
+        type : 'PASSWORD_CHANGE_ERROR',
+        payload : err
+    }
+}
+
+const passwordChangeSuccess = () => {
+    return {
+        type : 'PASSWORD_CHANGE_SUCCESS'
+    }
+}
+
+
+export const changePassword = (password, password1, password2) => {
+    return async dispatch => {
+        dispatch(startPasswordChange());
+        let form = new FormData()
+        form.append('password', password)
+        form.append('password1', password1)
+        form.append('password2', password2)
+        fetch(BASE_URL+"/api/auth/change_password/", {
+            method : "POST",
+            headers : {
+                'Authorization' : 'Token '+localStorage.getItem('token')
+            },
+            body : form
+        }).then(res => res.json())
+        .then(data => {
+            if(data.error) {
+                dispatch(passwordChangeError(data.error))
+                return dispatch(removeError())
+            }
+            dispatch(passwordChangeSuccess(data))
+        }).catch(err => {
+            dispatch(passwordChangeError(err))
+        });
+    }
+}

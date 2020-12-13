@@ -90,3 +90,41 @@ export const loginState = (state={status : false}, action) => {
         default : return state;
     }
 }
+
+
+export const passwordChangeReducer = (state={
+    loading : false,
+    error : null,
+    message : null
+}, action) => {
+    switch(action.type) {
+        case 'PASSWORD_CHANGE_START' :
+            return {
+                ...state,
+                loading : true
+            }
+
+        case 'PASSWORD_CHANGE_ERROR' : 
+            return {    
+                ...state,
+                loading : false,
+                error : action.payload
+            }   
+
+        case 'PASSWORD_CHANGE_SUCCESS' : 
+            return {
+                ...state,
+                loading : false,
+                error : null,
+                message : 'Password changed succesfully'
+            }
+
+        case 'REMOVE_ERROR' : return {
+            ...state,
+            error : null
+        }
+
+        default : return state;
+    }
+
+}
