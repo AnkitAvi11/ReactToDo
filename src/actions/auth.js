@@ -160,6 +160,11 @@ const passwordChangeSuccess = () => {
     }
 }
 
+const removeSucces = () => {
+    return {
+        type : 'REMOVE_SUCCES'
+    }
+}
 
 export const changePassword = (password, password1, password2) => {
     return async dispatch => {
@@ -181,8 +186,31 @@ export const changePassword = (password, password1, password2) => {
                 return dispatch(removeError())
             }
             dispatch(passwordChangeSuccess(data))
+            dispatch(removeSucces())
         }).catch(err => {
             dispatch(passwordChangeError(err))
         });
+    }
+}
+
+
+export const userDetailsChange = (email, first_name, last_name="") => {
+    let formData = new FormData();
+    formData.append('email', email)
+    formData.append('fname', first_name)
+    formData.append('lname', last_name)
+    return async dispatch => {
+        fetch(BASE_URL+"/api/auth/updateuser/", {
+            method : "POST",
+            headers : {
+                "Authorization" : "Token "+localStorage.getItem('token')
+            },
+            body : formData
+        }).then(res => res.json())
+        .then(data => {
+            return data
+        }).catch(err => {
+            return err
+        })
     }
 }

@@ -124,6 +124,11 @@ export const passwordChangeReducer = (state={
             error : null
         }
 
+        case 'REMOVE_SUCCES' : return {
+            ...state,
+            message : null
+        }
+
         default : return state;
     }
 
