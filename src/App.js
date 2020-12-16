@@ -12,6 +12,7 @@ import Loggedin from './Components/Loggedin';
 import {changeLoginState} from './actions/auth';
 import PrivateRoute from './actions/PrivateRoute';
 import Profile from './Components/Profile';
+import Tasks from './tasks/Tasks';
 
 export const history = createHistory();
 
@@ -35,6 +36,8 @@ class App extends Component {
                     <Loggedin path="/signup" component={Signup} loggedin={this.props.loggedin} />
 
                     <PrivateRoute path="/profile" component={Profile} loggedin={this.props.loggedin} />
+
+                    <PrivateRoute path="/tasks" component={Tasks} loggedin={this.props.loggedin} />
 
                     <Route component={Notfound} />
 
