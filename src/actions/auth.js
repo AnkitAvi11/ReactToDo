@@ -4,14 +4,12 @@ import { BASE_URL } from './config';
 // import { history } from "../App";
 
 const startLogin = () => {
-    console.log('Start login action')
     return {
         type : 'LOGIN_START'
     }
 }
 
 const loginError = (err) => {
-    console.log('Login error action')
     return {
         type : 'LOGIN_ERROR',
         payload : err
@@ -19,7 +17,6 @@ const loginError = (err) => {
 }
 
 const loginSuccess = (user) => {
-    console.log('login success action');
     return {
         type : 'LOGIN_SUCCESS',
         payload : user
@@ -126,7 +123,6 @@ export const logoutUser = () => {
 }
 
 export const changeLoginState = (token = localStorage.getItem('token')) => {
-    console.log('Called')
     return async dispatch => {
         let user = await (await fetch(BASE_URL+'/api/auth/validate/?token='+token)).json();
         if(user.error) {
