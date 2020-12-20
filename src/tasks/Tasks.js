@@ -1,14 +1,52 @@
 import React, {Component} from 'react';
+import { withAlert } from 'react-alert';
 import { NavLink, Route, Switch } from 'react-router-dom';
 import FutureTasks from './FutureTasks';
 import Missed from './Missed';
 import Upcoming from './Upcoming';
 
-const missed = () => {
-    return <p>Missed</p>
-}
 
 class Tasks extends Component {
+
+    constructor(props)  {
+        super(props)
+        this.state = {
+            title : '',
+            description : '',
+            date : ''
+        }
+    }
+
+    handleChange = (e) => {
+        this.setState({
+            [e.target.name] : e.target.value
+        })
+    }
+
+    submitForm = (e) => {
+        e.preventDefault();
+        let token = localStorage.getItem('token')
+
+        let body = new FormData()
+        body.append('title', this.state.title)
+        body.append('date', this.state.date)
+        body.append('description', this.state.description)
+
+        fetch('http://127.0.0.1:8000/tasks/add/',{
+            method : 'POST',
+            body : body,
+            headers : {
+                'Authorization' : 'Token '+token
+            }
+        }).then(res => res.json())
+        .then(data => {
+            this.props.alert.show('Task added succesfully', {type : 'success'})
+            window.location.reload()
+        }).catch(err => {
+            this.props.alert.show('Some unexpected error occurred', {type : 'error'})
+        })
+    }
+
     render () {
         document.title = "Tasks"
         return (
@@ -18,14 +56,18 @@ class Tasks extends Component {
                         <h3>Add Task</h3>
                         <div className="card">
                             <div className="card-body">
-                                <form>
+                                <form onSubmit={this.submitForm}>
                                     <div className="form-group">
                                         <label  htmlFor="title">Task title</label>
-                                        <input type="text" name="title" className="form-control" id="title" required="required" />
+                                        <input type="text" name="title" className="form-control" id="title" required="required" autoFocus={true} value={this.state.title} onChange={this.handleChange} />
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="date">Completion date</label>
-                                        <input type="date" name="date" className="form-control" id="date" required="required" />
+                                        <input type="date" name="date" className="form-control" id="date" required="required" value={this.state.date} onChange={this.handleChange} />
+                                    </div>
+                                    <div className="form-group">
+                                        <label htmlFor="description">Description</label>
+                                        <textarea className="form-control" placeholder="Task details ..." name='description' value={this.state.description} onChange={this.handleChange} ></textarea>
                                     </div>
                                     <div className="form-group">
                                         <button className="btn btn-success">Add task</button>
@@ -62,4 +104,4 @@ class Tasks extends Component {
     }
 }
 
-export default Tasks;
+export default withAlert()(Tasks);

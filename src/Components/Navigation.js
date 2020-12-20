@@ -28,6 +28,9 @@ class Navigation extends Component {
         </React.Fragment>
 
         let after_auth_routes = this.props.user ? <React.Fragment>
+            <li className="nav-item">
+                <NavLink to="/login" className="nav-link btn btn-outline-secondary" exact> + Add Task </NavLink>
+            </li>
             <li className="nav-item dropdown">
                 <span className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Hello, {this.props.user.username}
@@ -51,14 +54,9 @@ class Navigation extends Component {
             </button>
             <div className="collapse navbar-collapse" id="collapsibleNavbar">
                 <ul className="navbar-nav">
+                
                 <li className="nav-item">
-                    <NavLink to="/about" className="nav-link">About</NavLink>
-                </li>
-                <li className="nav-item">
-                    <NavLink to="/features" className="nav-link">Features</NavLink>
-                </li>
-                <li className="nav-item">
-                    <NavLink to="/contribute" className="nav-link" target="blank">Contribute</NavLink>
+                    <a href="https://github.com/AnkitAvi11/REST-API-for-Beginners" className="nav-link" target="blank">Contribute</a>
                 </li>    
                 </ul>
 
