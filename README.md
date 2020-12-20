@@ -30,7 +30,7 @@ This app is a demo to demostrate the use of the REST API I am working that will 
 ### Upcoming tasks
 <img src="./public/images/td7.png">
 
-### Completed tasks
+### Missed tasks (Deadline missed)
 <img src="./public/images/td8.png">
 
 ### Logout
