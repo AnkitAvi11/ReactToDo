@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { withAlert } from 'react-alert';
 
-class Upcoming extends Component {
+class Missed extends Component {
 
     constructor(props) {
         super(props);
@@ -12,7 +12,7 @@ class Upcoming extends Component {
 
     componentDidMount = () => {
         let token = localStorage.getItem('token');
-        fetch('http://127.0.0.1:8000/tasks/', {
+        fetch('http://127.0.0.1:8000/tasks/missed/', {
             method : 'GET',
             headers : {
                 'Authorization' : 'Token ' + token
@@ -37,7 +37,7 @@ class Upcoming extends Component {
         }).then(res => res.json())
         .then(async data => {
             this.props.alert.show('Mark as completed', {type : 'success'})
-            fetch('http://127.0.0.1:8000/tasks/', {
+            fetch('http://127.0.0.1:8000/tasks/missed/', {
                 method : 'GET',
                 headers : {
                     'Authorization' : 'Token ' + token
@@ -76,7 +76,7 @@ class Upcoming extends Component {
 
                         <div className="d-flex justify-content-between align-items-center">
                             <span style={{color:"grey"}}><i className="far fa-clock"></i> {task.completion_date}</span>
-                            <button className="btn btn-outline-success" onClick={()=>{this.completeTask(task.id)}}>Mark as complete</button>
+                            <button className="btn btn-outline-danger" onClick={()=>{this.completeTask(task.id)}}>Mark as complete</button>
                         </div>
                     </div>
                 </div>
@@ -91,4 +91,4 @@ class Upcoming extends Component {
     }
 }
 
-export default withAlert()(Upcoming);
+export default withAlert()(Missed);

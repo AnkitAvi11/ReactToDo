@@ -1,10 +1,8 @@
 import React, {Component} from 'react';
 import { NavLink, Route, Switch } from 'react-router-dom';
+import FutureTasks from './FutureTasks';
+import Missed from './Missed';
 import Upcoming from './Upcoming';
-
-const complete = () => {
-    return <p>Completed</p>
-}
 
 const missed = () => {
     return <p>Missed</p>
@@ -40,10 +38,10 @@ class Tasks extends Component {
                         <h3>Your Tasks</h3>
                         <ul className="nav nav-pills">
                         <li className="nav-item">
-                            <NavLink className="nav-link" to="/tasks" exact>Upcoming</NavLink>
+                            <NavLink className="nav-link" to="/tasks" exact>Today</NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink className="nav-link" to="/tasks/completed">Completed</NavLink>
+                            <NavLink className="nav-link" to="/tasks/upcoming" exact>Upcoming</NavLink>
                         </li>
                         <li className="nav-item">
                             <NavLink className="nav-link" to="/tasks/missed">Missed</NavLink>
@@ -52,9 +50,9 @@ class Tasks extends Component {
                         <Switch>
                             <Route path={`${this.props.match.path}`} component={Upcoming} exact />
 
-                            <Route path={`${this.props.match.path}/completed`} component={complete} />
+                            <Route path={`${this.props.match.path}/upcoming`} component={FutureTasks} exact />
 
-                            <Route path={`${this.props.match.path}/missed`} component={missed} />
+                            <Route path={`${this.props.match.path}/missed`} component={Missed} />
                         </Switch>
                     </div>
                 </div>
