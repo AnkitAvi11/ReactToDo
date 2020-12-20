@@ -19,3 +19,19 @@ This app is a demo to demostrate the use of the REST API I am working that will 
 
 ### Register screen
 <img src="./public/images/td4.png">
+
+### User profile setting
+<img src="./public/images/td5.png">
+
+### Tasks
+
+<img src="./public/images/td6.png">
+
+### Upcoming tasks
+<img src="./public/images/td7.png">
+
+### Completed tasks
+<img src="./public/images/td8.png">
+
+### Logout
+<img src="./public/images/td9.png">
